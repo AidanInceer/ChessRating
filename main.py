@@ -1,11 +1,11 @@
 from chessrating.extract import Extract
 from chessrating.transform import Transform
-import chessrating.plot
+from IPython.display import display
 
 
 if __name__ == "__main__":
     username = "Ainceer"
-    user_data = Extract()
-    user_data_df = user_data.run_data_extract(username)
-    print(user_data_df)
-    game_data = Transform.clean(user_data_df, username)
+    user_data_df = Extract.run_data_extract(username)
+    display(user_data_df)
+    final_df = Transform.clean(user_data_df, username)
+    display(final_df)
