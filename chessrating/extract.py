@@ -1,13 +1,13 @@
-from dataclasses import dataclass
-import chessdotcom
 import json
+from dataclasses import dataclass
+
+import chessdotcom
 import pandas as pd
 import requests
 
 
 @dataclass
 class Extract:
-    
     @staticmethod
     def run_data_extract(username: str) -> None:
         urls = chessdotcom.get_player_game_archives(username).json

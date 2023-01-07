@@ -1,7 +1,7 @@
-from chessrating.extract import Extract
-from chessrating.transform import Transform
 from IPython.display import display
 
+from chessrating.extract import Extract
+from chessrating.transform import Transform
 
 if __name__ == "__main__":
     username = "Ainceer"

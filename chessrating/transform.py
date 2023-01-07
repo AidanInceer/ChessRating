@@ -1,17 +1,17 @@
 from dataclasses import dataclass
+from datetime import datetime
 from itertools import groupby
-import chessdotcom
-import pandas as pd
+
 import chess
 import chess.engine
 import chess.pgn
-from datetime import datetime
+import chessdotcom
+import pandas as pd
 from IPython.display import display
 
 
 @dataclass
 class Transform:
-
     @staticmethod
     def clean(user_data_df: pd.DataFrame, username: str):
         path_temppgn = r"./data/temp.pgn"
@@ -49,7 +49,7 @@ class Transform:
             "game_date_time",
             "max_rating",
             "min_rating",
-            "mean_rating"
+            "mean_rating",
         ]
         core_df = pd.DataFrame(filtered_game_list)
         df_max = core_df.groupby(["time_control", "game_date"]).max("user_rating")
@@ -61,5 +61,7 @@ class Transform:
         df_join_min.rename(columns={"user_rating_x": "user_rating"}, inplace=True)
         df_join_mean = pd.merge(df_join_min, df_mean, on=["time_control", "game_date"])
         df_join_mean.rename(columns={"user_rating_y": "mean_rating"}, inplace=True)
-        df_join_mean.to_csv(r"./data/game_data.csv", sep=",", index=False, header=headers)
+        df_join_mean.to_csv(
+            r"./data/game_data.csv", sep=",", index=False, header=headers
+        )
         return df_join_mean
