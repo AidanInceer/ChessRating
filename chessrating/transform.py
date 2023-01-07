@@ -1,13 +1,10 @@
 from dataclasses import dataclass
 from datetime import datetime
-from itertools import groupby
 
 import chess
 import chess.engine
 import chess.pgn
-import chessdotcom
 import pandas as pd
-from IPython.display import display
 
 
 @dataclass
